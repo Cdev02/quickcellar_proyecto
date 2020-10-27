@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C054B"
+    tools:context=".Actualizar">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/txtANickname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textColor="#BB9009"
+                android:hint="Identificación"
+                android:textColorHint="#BB9009"
+                android:inputType="number"></EditText>
+            <EditText
+                android:id="@+id/txtANomUsuario"
+                android:layout_width="300dp"
+                android:textColor="#BB9009"
+                android:hint="Nuevo nombre para el usuario"
+                android:textColorHint="#BB9009"
+                android:layout_marginTop="25dp"
+                android:layout_height="wrap_content"></EditText>
+            <EditText
+                android:id="@+id/txtAcorreoUS"
+                android:layout_width="300dp"
+                android:textColor="#BB9009"
+                android:hint="Nuevo correo para el usuario"
+                android:textColorHint="#BB9009"
+                android:layout_marginTop="25dp"
+                android:layout_height="wrap_content"></EditText>
+            <EditText
+                android:id="@+id/txtAContraUsuario"
+                android:layout_width="300dp"
+                android:layout_marginTop="25dp"
+                android:layout_height="wrap_content"
+                android:textColor="#BB9009"
+                android:hint="Nueva contraseña"
+                android:textColorHint="#BB9009"
+                android:inputType="textPassword"></EditText>
+            <Button
+                android:id="@+id/btnActualizar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/boton_redondeado"
+                android:text="Actualizar"
+                android:textColor="#140C37"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"></Button>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

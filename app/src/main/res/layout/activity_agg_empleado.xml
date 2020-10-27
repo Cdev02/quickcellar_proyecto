@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C054B"
+    tools:context=".AggEmpleado"
+    style="@style/AppTheme">
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIdEm"
+        android:inputType="number"
+        android:hint="Ingrese Id"
+        android:textColorHint="#BB9009"
+        android:textColor="#BB9009">
+    </EditText>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNombre"
+        android:hint="Ingrese nombre del empleado"
+        android:textColorHint="#BB9009"
+        android:textColor="#BB9009"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/txtIdEm">
+    </EditText>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtFechaing"
+        android:hint="Seleccione fecha de ingreso"
+        android:textColorHint="#BB9009"
+        android:textColor="#BB9009"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/txtNombre">
+    </EditText>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAgregarEmpl"
+        android:layout_below="@id/txtFechaing"
+        android:text="AGREGAR"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/boton_redondeado"
+        android:textColor="#140C37"
+        android:textSize="20dp">
+    </Button>
+
+</RelativeLayout>
