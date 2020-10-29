@@ -28,12 +28,14 @@ public class IngCliente extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                            db.execSQL("insert into cliente values(" +
-                            txtNickname.getText().toString() + ",'" +
-                            txtNomUsuario.getText().toString() + "','" +
-                            txtCorreoUs.getText().toString() + "','" +
-                            txtContraUsuario.getText().toString() + "','" + "')");
-                    Toast.makeText(getApplicationContext(),"Registro compretado",Toast.LENGTH_LONG).show();
+                    if(validar_registro()) {
+                        db.execSQL("insert into cliente values(" +
+                                txtNickname.getText().toString() + ",'" +
+                                txtNomUsuario.getText().toString() + "','" +
+                                txtCorreoUs.getText().toString() + "','" +
+                                txtContraUsuario.getText().toString() + "','" + "')");
+                        Toast.makeText(getApplicationContext(), "Registro compretado", Toast.LENGTH_LONG).show();
+                    }
 
                 }catch (Exception er)
                 {
@@ -44,10 +46,40 @@ public class IngCliente extends AppCompatActivity {
                 txtCorreoUs.setText("");
                 txtContraUsuario.setText("");
 
-                Intent i=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
+
             }
         });
+    }
+
+    public boolean validar_registro(){
+        String nombre= txtNomUsuario.getText().toString();
+        String nick=txtNickname.getText().toString();
+        String correo= txtCorreoUs.getText().toString();
+        String contra=txtContraUsuario.getText().toString();
+        if(nombre.length()==0){
+            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(nick.length()==0){
+            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(correo.length()==0){
+            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(contra.length()==0){
+            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(nombre.length()!=0 && nick.length()!=0 && correo.length()!=0 && contra.length()!=0){
+            Toast.makeText(getApplicationContext(),"Registro hecho exitosamente",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     private void conectar() {
