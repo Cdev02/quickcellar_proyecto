@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class IngCliente extends AppCompatActivity {
-    EditText txtNomUsuario,txtContraUsuario,txtNickname,txtCorreoUs;
+    EditText txtNomUsuario,txtContraUsuario,txtIdCliente,txtCorreoUs;
     Button btnIgresar;
     myClass myClass;
     SQLiteDatabase db;
@@ -29,19 +29,19 @@ public class IngCliente extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     if(validar_registro()) {
-                        db.execSQL("insert into cliente values(" +
-                                txtNickname.getText().toString() + ",'" +
+                        db.execSQL("INSERT INTO cliente VALUES('" +
+                                txtIdCliente.getText().toString() + "','" +
                                 txtNomUsuario.getText().toString() + "','" +
                                 txtCorreoUs.getText().toString() + "','" +
-                                txtContraUsuario.getText().toString() + "','" + "')");
-                        Toast.makeText(getApplicationContext(), "Registro compretado", Toast.LENGTH_LONG).show();
+                                txtContraUsuario.getText().toString() + "', 0)");
+                        Toast.makeText(getApplicationContext(), "Registro completado", Toast.LENGTH_LONG).show();
                     }
 
                 }catch (Exception er)
                 {
                     Toast.makeText(IngCliente.this,er.getMessage().toString(),Toast.LENGTH_LONG);
                 }
-                txtNickname.setText("");
+                txtIdCliente.setText("");
                 txtNomUsuario.setText("");
                 txtCorreoUs.setText("");
                 txtContraUsuario.setText("");
@@ -53,7 +53,7 @@ public class IngCliente extends AppCompatActivity {
 
     public boolean validar_registro(){
         String nombre= txtNomUsuario.getText().toString();
-        String nick=txtNickname.getText().toString();
+        String nick=txtIdCliente.getText().toString();
         String correo= txtCorreoUs.getText().toString();
         String contra=txtContraUsuario.getText().toString();
         if(nombre.length()==0){
@@ -86,7 +86,7 @@ public class IngCliente extends AppCompatActivity {
         txtContraUsuario=findViewById(R.id.txtContraUsuario);
         txtNomUsuario=findViewById(R.id.txtNomUsuario);
         btnIgresar=findViewById(R.id.btnIngresar);
-        txtNickname=findViewById(R.id.txtNickname);
+        txtIdCliente=findViewById(R.id.txtIdCliente);
         txtCorreoUs=findViewById(R.id.txtCorreoUs);
     }
 }

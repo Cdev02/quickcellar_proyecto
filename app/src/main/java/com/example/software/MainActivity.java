@@ -15,26 +15,13 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btnIngCliente,btnVerClientes,btnActuCliente,btnAggProduct,btnVerProductos,btnAggEmple;
+    Button btnIngCliente,btnVerClientes,btnAggSeccion,btnAggProduct,btnVerProductos,btnAggEmple;
     ImageButton btnImgSalir;
-    EditText txt1;
-    myClass myClass;
-    SQLiteDatabase db;
-
-    ListView lvResultados;
-    ArrayList<String>listado=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.administrar_gerente);
         conectar();
-
-
-        myClass=new myClass(this);
-        myClass.startWork();
-        db=myClass.getWritableDatabase();
-
-
         btnIngCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),VerProductos.class);
                 startActivity(i);
-
             }
         });
         btnAggProduct.setOnClickListener(new View.OnClickListener() {
@@ -78,25 +64,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnActuCliente.setOnClickListener(new View.OnClickListener() {
+        btnAggSeccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),Actualizar.class);
+                Intent i=new Intent(getApplicationContext(),secciones_activity.class);
                 startActivity(i);
             }
         });
     }
-
     private void conectar() {
         btnIngCliente=findViewById(R.id.btnIngCliente);
         btnVerClientes=findViewById(R.id.btnVerClientes);
-        btnActuCliente=findViewById(R.id.btnActuCliente);
+        btnAggSeccion=findViewById(R.id.btnAggSeccion);
         btnAggProduct=findViewById(R.id.btnAggProduct);
         btnVerProductos=findViewById(R.id.btnVerProductos);
         btnAggEmple=findViewById(R.id.btnAggEmple);
         btnImgSalir = findViewById(R.id.btnImgSalir);
-
-
     }
-
 }

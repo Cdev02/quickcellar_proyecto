@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C054B"
-    tools:context=".AggEmpleado"
-    style="@style/AppTheme">
+    tools:context=".AggEmpleado">
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"

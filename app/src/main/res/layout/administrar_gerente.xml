@@ -42,10 +42,10 @@
                 android:background="@drawable/boton_redondeado">
             </Button>
             <Button
-                android:id="@+id/btnActuCliente"
+                android:id="@+id/btnAggSeccion"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Actualizar cliente"
+                android:text="Agregar sección de productos"
                 android:textSize="18dp"
                 android:layout_marginTop="18dp"
                 android:textStyle="bold"

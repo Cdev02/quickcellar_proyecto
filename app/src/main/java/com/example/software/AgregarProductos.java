@@ -3,17 +3,24 @@ package com.example.software;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class AgregarProductos extends AppCompatActivity {
-    EditText txtNomProducto, txtCantidad,txtidProducto,txtDescrip,txtPrecio,txtMarca;
+    EditText txtNombrePr, txtMarcaPr,txtDescripPr,txtPrecioPr,txtRefPr;
     Button btnAgregar;
+    Spinner spSecciones;
+    ArrayList<String> listado=new ArrayList<>();
     myClass myClass;
     SQLiteDatabase db;
     @Override
@@ -24,53 +31,92 @@ public class AgregarProductos extends AppCompatActivity {
         myClass=new myClass(this);
         myClass.startWork();
         db=myClass.getWritableDatabase();
+        desplegar();
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id_sec=obtenerIdSeccion();
                 try {
-                    if(validar_registro()){
-                        db.execSQL("insert into producto values(" +
-                        Integer.parseInt(txtidProducto.getText().toString()) + ",'" +
-                        txtNomProducto.getText().toString() + "','" +
-                        txtCantidad.getText().toString() + "','" +
-                        txtMarca.getText().toString() + "','" +
-                        txtDescrip.getText().toString() + "','" +
-                        Integer.parseInt(txtPrecio.getText().toString()) + "')");
-                        Toast.makeText(getApplicationContext(),"Registro completado",Toast.LENGTH_LONG).show();
+                    int precioProducto=Integer.parseInt(txtPrecioPr.getText().toString());
+                    if(!db.isOpen()){
+                        db=myClass.getWritableDatabase();
+                        if(validar_registro()){
+                            db.execSQL("INSERT INTO producto VALUES(null,"+id_sec+",'" +
+                                    txtNombrePr.getText().toString() + "','" +
+                                    txtRefPr.getText().toString() + "','" +
+                                    txtMarcaPr.getText().toString() + "','" +
+                                    txtDescripPr.getText().toString() +"',"+precioProducto+")");
+                            Toast.makeText(getApplicationContext(),"Registro completado",Toast.LENGTH_LONG).show();
+                            db.close();
+                        }
                     }
                 }catch (Exception er)
                 {
-                    Toast.makeText(AgregarProductos.this,er.getMessage().toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),er.getMessage().toString(),Toast.LENGTH_LONG).show();
                 }
-                txtNomProducto.setText("");
-                txtCantidad.setText("");
-                txtidProducto.setText("");
-                txtDescrip.setText("");
-                txtPrecio.setText("");
-                txtMarca.setText("");
+                txtNombrePr.setText("");
+                txtRefPr.setText("");
+                spSecciones.setSelected(false);
+                txtDescripPr.setText("");
+                txtPrecioPr.setText("");
+                txtMarcaPr.setText("");
             }
         });
     }
+
+    private int obtenerIdSeccion(){
+        Cursor myCursor;
+        String nombreSec=spSecciones.getSelectedItem().toString();
+        int id_sec=0;
+        SQLiteDatabase db =myClass.getWritableDatabase();
+        myCursor=db.rawQuery("SELECT Id_seccion FROM seccion WHERE nombre_seccion='"+nombreSec+"'",null);
+        if(myCursor.moveToFirst()) {
+            do {
+                id_sec=myCursor.getInt(0);
+            }while (myCursor.moveToNext());
+        }
+        db.close();
+        return id_sec;
+    }
+    private ArrayList<String> ListaUnidades(){
+        Cursor myCursor;
+        ArrayList<String>datos= new ArrayList<>();
+        SQLiteDatabase db =myClass.getWritableDatabase();
+        myCursor=db.rawQuery("SELECT * FROM seccion",null);
+        if(myCursor.moveToFirst()) {
+            do {
+                String line = myCursor.getString(1);
+                datos.add(line);
+            }while (myCursor.moveToNext());
+        }
+        db.close();
+        return  datos;
+    }
+    private void desplegar()
+    {
+        listado=ListaUnidades();
+        ArrayAdapter adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,listado);
+        spSecciones.setAdapter(adapter);
+        spSecciones.setSelection(-1);
+    }
+
+
+
     public boolean validar_registro(){
-        String nombreProducto=txtNomProducto.getText().toString();
-        String IdProducto=txtidProducto.getText().toString();
-        String cantidadProducto=txtCantidad.getText().toString();
-        String descripcion=txtDescrip.getText().toString();
-        String precioProducto=txtPrecio.getText().toString();
-        String marcaProducto=txtMarca.getText().toString();
+        String nombreProducto=txtNombrePr.getText().toString();
+        String refProducto=txtRefPr.getText().toString();
+        String descripcionPr=txtDescripPr.getText().toString();
+        String precioProducto=txtPrecioPr.getText().toString();
+        String marcaProducto=txtMarcaPr.getText().toString();
         if(nombreProducto.length()==0){
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(IdProducto.length()==0){
+        if(refProducto.length()==0){
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(cantidadProducto.length()==0){
-            Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(descripcion.length()==0){
+        if(descripcionPr.length()==0){
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -82,8 +128,8 @@ public class AgregarProductos extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(nombreProducto.length()!=0 && IdProducto.length()!=0 && cantidadProducto.length()!=0
-        &&descripcion.length()!=0 &&precioProducto.length()!=0 &&marcaProducto.length()!=0){
+        if(nombreProducto.length()!=0 && refProducto.length()!=0
+        &&descripcionPr.length()!=0 &&precioProducto.length()!=0 &&marcaProducto.length()!=0){
             Toast.makeText(getApplicationContext(),"Registro hecho exitosamente",Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -93,12 +139,12 @@ public class AgregarProductos extends AppCompatActivity {
         }
     }
     private void conectar() {
-        txtCantidad = findViewById(R.id.txtCantidad);
-        txtNomProducto = findViewById(R.id.txtNomProducto);
-        txtidProducto=findViewById(R.id.txtidProducto);
-        txtDescrip=findViewById(R.id.txtDescrip);
-        txtPrecio=findViewById(R.id.txtPrecio);
+        txtNombrePr = findViewById(R.id.txtNomProducto);
+        txtRefPr = findViewById(R.id.txtReferenciaPr);
+        spSecciones=findViewById(R.id.spSecciones);
+        txtMarcaPr=findViewById(R.id.txtMarcaPr);
+        txtDescripPr=findViewById(R.id.txtDescripcionPr);
         btnAgregar = findViewById(R.id.btnAgregar);
-        txtMarca=findViewById(R.id.txtMarca);
+        txtPrecioPr=findViewById(R.id.txtPrecioPr);
     }
 }

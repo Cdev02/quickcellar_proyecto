@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#0C054B"
-    tools:context=".IngCliente"
-    style="@style/AppTheme">
-
+    tools:context=".secciones_activity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,52 +14,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
-                android:id="@+id/txtIdCliente"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Ingrese Id del cliente"
+                android:hint="Ingrese nombre de la sección"
                 android:textColorHint="#BB9009"
-                android:textColor="#BB9009">
-            </EditText>
+                android:textColor="#BB9009"
+                android:id="@+id/txtNombreSeccion"></EditText>
             <EditText
-                android:id="@+id/txtNomUsuario"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese nombre del usuario"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:id="@+id/txtCorreoUs"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Ingrese correo electrónico del usuario"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:id="@+id/txtContraUsuario"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Ingrese contraseña de acceso"
+                android:hint="Ingrese descripción de la sección"
                 android:textColorHint="#BB9009"
                 android:textColor="#BB9009"
                 android:layout_marginTop="25dp"
-                android:inputType="textPassword">
-            </EditText>
-            <Button
-                android:id="@+id/btnIngresar"
-                android:layout_width="150dp"
+                android:id="@+id/txtDescripcionSeccion"></EditText>
+            <EditText
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Ingresar"
-                android:layout_marginTop="30dp"
+                android:hint="Seleccione fecha de creación de la sección"
+                android:textColorHint="#BB9009"
+                android:textColor="#BB9009"
+                android:layout_marginTop="25dp"
+                android:id="@+id/txtFechaCrSeccion"></EditText>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAgregarSecciones"
+                android:layout_below="@id/txtFechaing"
+                android:text="AGREGAR"
+                android:layout_marginTop="35dp"
                 android:background="@drawable/boton_redondeado"
                 android:textColor="#140C37"
-                android:textSize="15dp">
+                android:textSize="20dp">
             </Button>
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>

@@ -49,12 +49,13 @@ public class VerProductos extends AppCompatActivity {
         myCursor=db.rawQuery("SELECT * FROM producto",null);
         if(myCursor.moveToFirst()) {
             do {
-                String line =myCursor.getString(0)+"   "+
-                        myCursor.getString(1)+"   "+
-                        myCursor.getString(2)+"   "+
-                        myCursor.getString(3)+"   "+
-                        myCursor.getString(4)+"   "+
-                        myCursor.getInt(5);
+                String line =myCursor.getInt(0)+"\n"+
+                        myCursor.getInt(1)+"\n"+
+                        myCursor.getString(2)+"\n"+
+                        myCursor.getString(3)+"\n"+
+                        myCursor.getString(4)+"\n"+
+                        myCursor.getString(5)+"\n"+
+                        myCursor.getInt(6);
                 datos.add(line);
             }while (myCursor.moveToNext());
         }

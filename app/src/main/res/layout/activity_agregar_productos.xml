@@ -14,15 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <EditText
-                android:layout_width="300dp"
+            <Spinner
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Ingrese Id del producto"
-                android:textColorHint="#BB9009"
-                android:textColor="#BB9009"
-                android:id="@+id/txtidProducto">
-            </EditText>
+                android:gravity="center"
+                android:id="@+id/spSecciones"></Spinner>
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -35,8 +31,8 @@
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtCantidad"
-                android:hint="Ingrese cantidad para agregar"
+                android:id="@+id/txtReferenciaPr"
+                android:hint="Ingrese referencia del producto"
                 android:textColorHint="#BB9009"
                 android:layout_marginTop="25dp"
                 android:textColor="#BB9009">
@@ -44,26 +40,27 @@
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtDescrip"
-                android:hint="Ingrese Descripción del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtPrecio"
-                android:hint="Ingrese precio del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtMarca"
+                android:id="@+id/txtMarcaPr"
                 android:hint="Ingrese marca del producto"
+                android:textColorHint="#BB9009"
+                android:layout_marginTop="25dp"
+                android:textColor="#BB9009">
+            </EditText>
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDescripcionPr"
+                android:hint="Ingrese descripción del producto"
+                android:textColorHint="#BB9009"
+                android:layout_marginTop="25dp"
+                android:textColor="#BB9009">
+            </EditText>
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPrecioPr"
+                android:inputType="number"
+                android:hint="Ingrese precio del producto"
                 android:textColorHint="#BB9009"
                 android:layout_marginTop="25dp"
                 android:textColor="#BB9009">
