@@ -1,6 +1,8 @@
 package com.example.software;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,33 +17,27 @@ import java.util.ArrayList;
 
 public class VerProductos extends AppCompatActivity {
 
-    ListView llProductos;
-    Button btnVolverr;
+    RecyclerView recProductos;
     myClass myClass;
     SQLiteDatabase db;
-    ArrayList<String> listado=new ArrayList<>();
+    ArrayList<Producto>productoArrayList;
+    private ProductoAdapter productoAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_productos);
-        conectar();
         myClass=new myClass(this);
         myClass.startWork();
         db=myClass.getWritableDatabase();
-        desplegar();
-        btnVolverr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
-            }
-        });
+        recProductos=findViewById(R.id.recProductos);
+        productoArrayList=new ArrayList<>();
+        productoAdapter=new ProductoAdapter(this,productoArrayList);
+        RecyclerView recyclerView=findViewById(R.id.recProductos);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+        recyclerView.setAdapter(productoAdapter);
+        mostrarEnRecycler();
     }
 
-    private void conectar() {
-        llProductos = findViewById(R.id.llProductos);
-        btnVolverr= findViewById(R.id.btnVolverr);
-    }
     private ArrayList<String> ListaUnidades(){
         Cursor myCursor;
         ArrayList<String>datos= new ArrayList<>();
@@ -62,10 +58,21 @@ public class VerProductos extends AppCompatActivity {
         db.close();
         return  datos;
     }
-    private void desplegar()
-    {
-        listado=ListaUnidades();
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1,listado);
-        llProductos.setAdapter(adapter);
+    public void mostrarEnRecycler(){
+        SQLiteDatabase db=myClass.getReadableDatabase();
+        Producto producto=null;
+
+        Cursor cursor=db.rawQuery("SELECT * FROM producto",null);
+        while (cursor.moveToFirst()){
+            producto=new Producto();
+            producto.setID(cursor.getInt(0));
+            producto.setNombre(cursor.getString(2));
+            producto.setReferencia(cursor.getString(3));
+            producto.setMarca(cursor.getString(4));
+            producto.setDesscripcion(cursor.getString(5));
+            producto.setPrecio(cursor.getInt(6));
+            productoAdapter.agregarProducto(producto);
+
+        }
     }
 }

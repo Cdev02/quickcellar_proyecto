@@ -18,12 +18,13 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.produc
 
     private List<Producto> productoList = new ArrayList<>();
     private Context context;
+    private ArrayList<Producto>productosArrayList;
 
-    private ArrayList<Producto> productoArrayList;
 
-    public ProductoAdapter(List<Producto> productoList, Context context) {
+    public ProductoAdapter(Context context,ArrayList<Producto>productoList) {
         this.productoList = productoList;
         this.context = context;
+        this.productosArrayList=productoList;
     }
 
     @NonNull
@@ -49,6 +50,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.produc
     @Override
     public int getItemCount() {
         return productoList.size();
+    }
+
+    public void agregarProducto(Producto producto){
+        productoList.add(producto);
+        this.notifyDataSetChanged();
     }
 
     @Override

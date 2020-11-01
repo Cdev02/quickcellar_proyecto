@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Product_recy"></activity>
         <activity android:name=".secciones_activity" />
         <activity android:name=".login_usuario" />
         <activity android:name=".LogInGerente">
