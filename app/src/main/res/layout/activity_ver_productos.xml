@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
     tools:context=".VerProductos">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recProductos"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-</LinearLayout>
+        android:layout_height="630dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:background="#0C054B"
+        android:layout_marginEnd="0dp"
+        android:id="@+id/llProductos">
+    </ListView>
+    <Button
+        android:id="@+id/btnVolverr"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/llProductos"
+        android:textSize="25dp"
+        android:text="Volver"
+        ></Button>
+</RelativeLayout>
