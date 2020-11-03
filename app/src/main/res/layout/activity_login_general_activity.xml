@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".comprar_activity">
+    tools:context=".login_general_activity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recProductos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="297dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

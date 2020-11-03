@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnVerProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),VerProductos.class);
+                Intent i=new Intent(getApplicationContext(),comprar_activity.class);
                 startActivity(i);
             }
         });
