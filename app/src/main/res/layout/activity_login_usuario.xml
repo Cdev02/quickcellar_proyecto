@@ -6,9 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".login_usuario">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtvTitu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clientes"
+            android:textColor="#BB9009"
+            android:fontFamily="sans-serif-black"
+            android:textSize="40dp">
+        </TextView>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtIdentUsu"
+            android:hint="Ingrese su Id"
+            android:textColorHint="#BB9009"
+            android:textColor="#BB9009"
+            android:layout_marginTop="25dp">
+        </EditText>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtvContra"
+            android:inputType="textPassword"
+            android:hint="Ingrese su contraseña"
+            android:textColorHint="#BB9009"
+            android:textColor="#BB9009"
+            android:layout_marginTop="25dp"
+            android:id="@+id/txtContraUsu">
+        </EditText>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/txtContraUsuario"
+            android:text="Ingresar"
+            android:textSize="20dp"
+            android:background="@drawable/boton_redondeado"
+            android:textColor="#140C37"
+            android:id="@+id/btnLoginUsu"
+            android:layout_marginTop="40dp">
+        </Button>
+    </LinearLayout>
 </RelativeLayout>
