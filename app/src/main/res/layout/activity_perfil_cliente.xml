@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0C054B"
     tools:context=".perfilClienteActivity">
 
     <ScrollView
@@ -17,33 +18,50 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView3"
+            <EditText
+                android:id="@+id/txtIdPer"
                 android:layout_width="317dp"
-                android:layout_height="30dp"
+                android:hint="Identificación"
+                android:layout_height="40dp"
+                android:textColorHint="#BB9009"
+                android:textColor="#BB9009"
+                android:enabled="false"
                 android:layout_marginTop="100dp"
-                android:text="TextView" />
+                />
 
-            <TextView
-                android:id="@+id/textView4"
+            <EditText
+                android:id="@+id/txtNomPer"
                 android:layout_width="317dp"
-                android:layout_height="30dp"
+                android:enabled="false"
+                android:layout_height="40dp"
+                android:hint="Nombre"
+                android:textColorHint="#BB9009"
+                android:textColor="#BB9009"
                 android:layout_marginTop="30dp"
-                android:text="TextView" />
+                 />
 
-            <TextView
-                android:id="@+id/textView"
+            <EditText
+                android:id="@+id/txtEmailPer"
                 android:layout_width="317dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
+                android:hint="Correo"
+                android:textColorHint="#BB9009"
+                android:enabled="false"
+                android:textColor="#BB9009"
                 android:layout_marginTop="30dp"
-                android:text="TextView" />
+                 />
 
-            <TextView
-                android:id="@+id/textView2"
+            <EditText
+                android:id="@+id/txtTotalcomp"
                 android:layout_width="317dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
+                android:hint="Total compras"
+                android:enabled="false"
+                android:textColorHint="#BB9009"
+                android:textColor="#BB9009"
+
                 android:layout_marginTop="30dp"
-                android:text="TextView" />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,9 +71,12 @@
 
                 <Button
                     android:id="@+id/btnActualizarDatosCliente"
-                    android:layout_width="152dp"
+                    android:layout_width="116dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="50dp"
+                    android:background="@drawable/boton_redondeado"
+                    android:textColor="#140C37"
+
                     android:text="Actualizar" />
 
                 <Button
@@ -63,6 +84,8 @@
                     android:layout_width="107dp"
                     android:layout_height="41dp"
                     android:layout_marginLeft="20dp"
+                    android:background="@drawable/boton_redondeado"
+                    android:textColor="#140C37"
                     android:text="Comprar" />
             </LinearLayout>
         </LinearLayout>

@@ -17,6 +17,7 @@ public class login_usuario extends AppCompatActivity {
     EditText txtContraUsu,txtIdentUsu;
     Button btnLoginUsu;
     myClass myClass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +43,29 @@ public class login_usuario extends AppCompatActivity {
     public void ingresar(String idCl,String claveCl){
         Cursor myCursor;
         SQLiteDatabase db =myClass.getWritableDatabase();
-        myCursor=db.rawQuery("SELECT Id_cliente,clave_ingreso FROM cliente WHERE Id_cliente='"+idCl+"' AND clave_ingreso='"+claveCl+"'",null);
+        myCursor=db.rawQuery("SELECT * FROM cliente WHERE Id_cliente='"+idCl+"' AND clave_ingreso='"+claveCl+"'",null);
         if (myCursor.moveToFirst()==true) {
+
+
             String idClienteExtraido = myCursor.getString(0);
-            String claveClienteExtraido = myCursor.getString(1);
+            String Nombre = myCursor.getString(1);
+            String Correo = myCursor.getString(2);
+            String claveClienteExtraido = myCursor.getString(3);
+            int totalCompras= myCursor.getInt(4);
+
+
+
+
             if (idCl.equals(idClienteExtraido) && claveCl.equals(claveClienteExtraido)) {
-                Intent intent = new Intent(getApplicationContext(), agregar_alCarrito.class);
-                startActivity(intent);
+
+                Intent intent1 = new Intent(getApplicationContext(), perfilClienteActivity.class);
+                intent1.putExtra("idCliente",idClienteExtraido);
+                intent1.putExtra("Nombre",Nombre);
+                intent1.putExtra("Correo",Correo);
+                intent1.putExtra("TotalCompras",totalCompras);
+
+                startActivity(intent1);
+
             }else{
                 Toast.makeText(getApplicationContext(),"Inténtelo de nuevo",Toast.LENGTH_SHORT).show();
             }
