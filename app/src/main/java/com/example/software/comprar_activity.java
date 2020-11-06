@@ -9,30 +9,51 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class comprar_activity extends AppCompatActivity {
     RecyclerView recProductos;
+    FloatingActionButton btn_salir;
     myClass myClass;
     SQLiteDatabase db;
     ArrayList<String> nombre_pr, referencia_pr,marca_pr,descr_pr;
     ArrayList<Integer> id_producto, id_seccionPr,precio_pr;
     CustomAdapter customAdapter;
+    int idCarrito;
+    String idCliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comprar_activity);
         recProductos=findViewById(R.id.recProductos);
+        btn_salir=findViewById(R.id.btnSalirAlPerfil);
         myClass=new myClass(this);
         myClass.startWork();
         db=myClass.getWritableDatabase();
+        Bundle b=getIntent().getExtras();
+        if(b!=null) {
+            idCarrito=b.getInt("idCar");
+            idCliente=b.getString("idCliente");
+        }
         inicializarArrays();
         guardarDatosEnArray();
         customAdapter = new CustomAdapter(comprar_activity.this,this, nombre_pr, referencia_pr, marca_pr,
-                descr_pr,id_producto, id_seccionPr,precio_pr);
+                descr_pr,id_producto, id_seccionPr,precio_pr,idCarrito);
         recProductos.setAdapter(customAdapter);
         recProductos.setLayoutManager(new LinearLayoutManager(comprar_activity.this));
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),perfilClienteActivity.class);
+                i.putExtra("idCliente",idCliente);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detalleProducto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvTituloPro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DETALLE DEL PRODUCTO"
+                android:textColor="#BB9009"
+                android:fontFamily="sans-serif-black"
+                android:textSize="30dp">
+            </TextView>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNomProducto"
+                android:textSize="17dp"
+                android:textColor="#000000"
+                android:text="NOMBRE DEL PRODUCTO"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/tvTituloPro"></TextView>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSeccionproducto"
+                android:textSize="17dp"
+                android:text="SECCIÓN DEL PRODUCTO"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/tvNomProducto"></TextView>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMarcaproducto"
+                android:textSize="17dp"
+                android:text="MARCA DEL PRODUCTO"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/tvSeccionproducto"></TextView>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRefProducto"
+                android:textSize="17dp"
+                android:text="REFERENCIA DEL PRODUCTO"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/tvMarcaproducto"></TextView>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDescrProducto"
+                android:textSize="17dp"
+                android:text="DESCRIPCIÓN DEL PRODUCTO"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/tvRefProducto"></TextView>
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtCantidadALlevar"
+                android:textColor="#000000"
+                android:inputType="number"
+                android:hint="Cantidad"
+                android:layout_below="@+id/tvDescrProducto"
+                android:layout_marginTop="20dp"></EditText>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAgregarAlCarrito"
+                android:background="@drawable/boton_redondeado"
+                android:text="Agregar al carrito"
+                android:layout_below="@+id/txtCantidadALlevar"
+                android:layout_marginTop="20dp"></Button>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

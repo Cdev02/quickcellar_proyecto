@@ -63,7 +63,8 @@ public class login_usuario extends AppCompatActivity {
                 intent1.putExtra("Nombre",Nombre);
                 intent1.putExtra("Correo",Correo);
                 intent1.putExtra("TotalCompras",totalCompras);
-
+                Toast.makeText(getApplicationContext(),"BIENVENIDO",Toast.LENGTH_LONG).show();
+                db.close();
                 startActivity(intent1);
 
             }else{
@@ -72,6 +73,7 @@ public class login_usuario extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(),"Inténtelo de nuevo",Toast.LENGTH_SHORT).show();
         }
+        db.close();
     }
 
     public boolean validar_registro(){

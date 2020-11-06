@@ -38,60 +38,23 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tvIdProducto"
                 app:layout_constraintTop_toTopOf="@+id/tvIdProducto"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"/>
-
-            <TextView
-                android:id="@+id/tvRefProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Referencia"
-                app:layout_constraintStart_toEndOf="@+id/tvIdProducto"
-                app:layout_constraintTop_toBottomOf="@id/tvNombreProducto"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"/>
-
-            <TextView
-                android:id="@+id/tvMarcaProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Marca"
-                app:layout_constraintStart_toEndOf="@+id/tvIdProducto"
-                app:layout_constraintTop_toBottomOf="@+id/tvRefProducto"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"/>
-
-            <TextView
-                android:id="@+id/tvDescripProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descripción"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvIdProducto"
-                app:layout_constraintTop_toBottomOf="@+id/tvMarcaProducto"
-                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginStart="20dp"/>
 
             <TextView
                 android:id="@+id/tvPrecioProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="68dp"
-                android:layout_marginTop="20dp"
                 android:text="Precio"
                 android:textColor="#B2FF59"
-                app:layout_constraintStart_toStartOf="@id/btnAgregarAlCarrito"
-                app:layout_constraintTop_toBottomOf="@id/btnAgregarAlCarrito" />
-
-            <Button
-                android:id="@+id/btnAgregarAlCarrito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:text="Agregar al carrito"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/tvIdProducto"
+                android:layout_marginRight="15dp"
+                />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

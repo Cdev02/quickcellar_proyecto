@@ -2,6 +2,8 @@ package com.example.software;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -22,17 +25,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Activity activity;
     private ArrayList<String> nombre_pr, referencia_pr,marca_pr,descr_pr;
     private ArrayList<Integer> id_producto, id_seccionPr,precio_pr;
-    CustomAdapter(Activity activity, Context context, ArrayList nombre_pr, ArrayList referencia_pr, ArrayList marca_pr, ArrayList descr_pr,
-                  ArrayList id_producto,ArrayList id_seccion,ArrayList precio){
+    private int idCarrito;
+    CustomAdapter(Activity activity, Context context, ArrayList nombre_pr,ArrayList referencia_pr,ArrayList marca_pr,
+                  ArrayList descr_pr, ArrayList id_producto,ArrayList id_seccion,ArrayList precio, int idCarrito) {
         this.activity = activity;
         this.context = context;
-        this.nombre_pr=nombre_pr;
+        this.nombre_pr = nombre_pr;
+        this.id_producto=id_producto;
+        this.id_seccionPr=id_seccion;
         this.referencia_pr=referencia_pr;
         this.marca_pr=marca_pr;
         this.descr_pr=descr_pr;
-        this.id_producto=id_producto;
-        this.id_seccionPr=id_seccion;
         this.precio_pr=precio;
+        this.idCarrito=idCarrito;
     }
     @NonNull
     @Override
@@ -47,11 +52,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.tvId_prod.setText(String.valueOf(id_producto.get(position)));
         holder.tvNombre_pro.setText(String.valueOf(nombre_pr.get(position)));
-        holder.tvRef_pro.setText(String.valueOf(referencia_pr.get(position)));
-        holder.tvMarca_pro.setText(String.valueOf(marca_pr.get(position)));
-        holder.tvDes_pro.setText(String.valueOf(descr_pr.get(position)));
         holder.tvPrecio_pro.setText(String.valueOf(precio_pr.get(position)));
-
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,detalleProducto.class);
+                intent.putExtra("idPr",id_producto.get(position));
+                intent.putExtra("nombrePr",String.valueOf(nombre_pr.get(position)));
+                intent.putExtra("seccionPr",String.valueOf(id_seccionPr.get(position)));
+                intent.putExtra("marcaPr",String.valueOf(marca_pr.get(position)));
+                intent.putExtra("refPr",String.valueOf(referencia_pr.get(position)));
+                intent.putExtra("descrPr",String.valueOf(descr_pr.get(position)));
+                intent.putExtra("idCarrito",idCarrito);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -61,15 +76,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvId_prod, tvNombre_pro, tvRef_pro, tvMarca_pro, tvDes_pro,tvPrecio_pro;
+        Button btnAgregarProductoAlCarrito;
+        TextView tvId_prod, tvNombre_pro,tvPrecio_pro;
         LinearLayout mainLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            btnAgregarProductoAlCarrito=itemView.findViewById(R.id.btnAgregarAlCarrito);
             tvId_prod = itemView.findViewById(R.id.tvIdProducto);
             tvNombre_pro = itemView.findViewById(R.id.tvNombreProducto);
-            tvRef_pro = itemView.findViewById(R.id.tvRefProducto);
-            tvMarca_pro = itemView.findViewById(R.id.tvMarcaProducto);
-            tvDes_pro=itemView.findViewById(R.id.tvDescripProducto);
             tvPrecio_pro=itemView.findViewById(R.id.tvPrecioProducto);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }

@@ -25,8 +25,6 @@ public class perfilClienteActivity extends AppCompatActivity {
             String Nombre= b.getString("Nombre");
             String Correo= b.getString("Correo");
             int TotalCompras= b.getInt("TotalCompras");
-
-
             txtIdPer.setText(idClienteExtraido);
             txtNomPer.setText(Nombre);
             txtEmailPer.setText(Correo);
@@ -44,6 +42,7 @@ public class perfilClienteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),agregar_alCarrito.class);
+                i.putExtra("idCliente", txtIdPer.getText().toString());
                 startActivity(i);
             }
         });

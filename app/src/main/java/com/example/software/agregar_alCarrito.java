@@ -25,20 +25,27 @@ public class agregar_alCarrito extends AppCompatActivity {
     Button btnCrearCar;
     Spinner spSelecEmp;
     EditText txtFechaCreaCar,txtEmpleadoCargo;
-    myClass myClass=new myClass(this);
+    myClass myClass;
+    SQLiteDatabase db;
     ArrayList<String>idEmp=new ArrayList<>();
     ArrayList<String> listado=new ArrayList<>();
+    String idClienteExtraido;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_al_carrito);
+        myClass=new myClass(this);
         myClass.startWork();
+        db=myClass.getWritableDatabase();
         conectar();
         desplegar();
         Calendar calendar=Calendar.getInstance();
         String fechaHoraActual= DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         txtFechaCreaCar.setText(fechaHoraActual);
-
+        Bundle b=getIntent().getExtras();
+        if(b!=null){
+            idClienteExtraido= b.getString("idCliente");
+        }
 
 
         spSelecEmp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -52,13 +59,33 @@ public class agregar_alCarrito extends AppCompatActivity {
 
             }
         });
+
+
+
         btnCrearCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int idCarrito=0;
                 String idEmpleadoExtraido=idEmp.get(spSelecEmp.getSelectedItemPosition()).trim();
                 Intent intent = new Intent(getApplicationContext(), comprar_activity.class);
-                intent.putExtra("idEmpleado", idEmpleadoExtraido);
-                intent.putExtra("fechaCreacion", txtFechaCreaCar.getText().toString());
+                try
+                {
+                    if(!db.isOpen()){
+                        db=myClass.getWritableDatabase();
+                        db.execSQL("INSERT INTO carrito VALUES(null ,'"+
+                        idEmpleadoExtraido + "','" +
+                        idClienteExtraido + "','" +
+                        txtFechaCreaCar.getText().toString() + "',"+0+")");
+                        Toast.makeText(getApplicationContext(),"Carrito se creó exitosamente",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception er)
+                {
+                    Toast.makeText(getApplicationContext(),er.getMessage(),Toast.LENGTH_LONG).show();
+                }
+                idCarrito=obtenerIdCarrito();
+                intent.putExtra("idCar", idCarrito);
+                intent.putExtra("idCliente",idClienteExtraido);
+                db.close();
                 startActivity(intent);
             }
         });
@@ -66,6 +93,17 @@ public class agregar_alCarrito extends AppCompatActivity {
 
 
 
+    private int obtenerIdCarrito(){
+        Cursor myCursor;
+        int idCarritoExtraido=0;
+        SQLiteDatabase db =myClass.getWritableDatabase();
+        myCursor=db.rawQuery("SELECT MAX(Id_carrito) FROM carrito",null);
+        if(myCursor.moveToFirst()) {
+            idCarritoExtraido = myCursor.getInt(0);
+        }
+        db.close();
+        return idCarritoExtraido;
+    }
 
     private ArrayList<String> extraerEmpleados(){
         Cursor myCursor;
