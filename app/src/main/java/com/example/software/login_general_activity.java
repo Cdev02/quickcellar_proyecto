@@ -33,7 +33,7 @@ public class login_general_activity extends AppCompatActivity {
     }
 
     private void conectar() {
-        btnCliente.findViewById(R.id.btnCliente);
-        btnGerente.findViewById(R.id.btnGerente);
+        btnCliente=findViewById(R.id.btnIngresoComoCliente);
+        btnGerente=findViewById(R.id.btnIngresoComoGerente);
     }
 }

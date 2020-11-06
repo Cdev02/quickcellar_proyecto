@@ -5,27 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login_general_activity">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
         <Button
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:text="Ingresar como Gerente"
-            android:id="@+id/btnGerente">
-
+            android:id="@+id/btnIngresoComoGerente">
         </Button>
         <Button
-
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:id="@+id/btnCliente"
+            android:id="@+id/btnIngresoComoCliente"
+            android:layout_below="@+id/btnIngresoComoGerente"
+            android:layout_marginTop="30dp"
             android:text="Ingresar como Cliente">
-
         </Button>
-    </LinearLayout>
-
-
 </RelativeLayout>

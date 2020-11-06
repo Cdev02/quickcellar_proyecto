@@ -9,18 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Carrito"></activity>
-        <activity android:name=".login_general_activity" />
-        <activity android:name=".comprar_activity" />
-        <activity android:name=".secciones_activity" />
-        <activity android:name=".login_usuario" />
-        <activity android:name=".LogInGerente">
+        <activity android:name=".perfilClienteActivity"></activity>
+        <activity android:name=".agregar_alCarrito" />
+        <activity android:name=".login_general_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".comprar_activity" />
+        <activity android:name=".secciones_activity" />
+        <activity android:name=".login_usuario" />
+        <activity android:name=".LogInGerente" />
         <activity android:name=".AggEmpleado" />
         <activity android:name=".VerProductos" />
         <activity android:name=".AgregarProductos" />

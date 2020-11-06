@@ -3,63 +3,74 @@ package com.example.software;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class login_usuario extends AppCompatActivity {
     EditText txtContraUsu,txtIdentUsu;
     Button btnLoginUsu;
-
-
+    myClass myClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_usuario);
         conectar();
+        myClass=new myClass(this);
+        myClass.startWork();
         btnLoginUsu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    if(validar_registro()) {
-                        Intent i=new Intent(getApplicationContext(),Carrito.class);
-                        startActivity(i);
-                    }
-
-                }catch (Exception er)
-                {
-                    Toast.makeText(getApplicationContext(), "intente de nuevo", Toast.LENGTH_LONG).show();
+                if(validar_registro()){
+                    ingresar(txtIdentUsu.getText().toString(),txtContraUsu.getText().toString());
                 }
-                txtContraUsu.setText("");
-                txtIdentUsu.setText("");
-
             }
         });
     }
 
     private void conectar() {
-        txtContraUsu.findViewById(R.id.txtContraUsu);
-        txtIdentUsu.findViewById(R.id.txtIdentUsu);
-        btnLoginUsu.findViewById(R.id.btnLoginUsu);
-
+        txtContraUsu=findViewById(R.id.txtContraUsu);
+        txtIdentUsu=findViewById(R.id.txtIdentUsu);
+        btnLoginUsu=findViewById(R.id.btnLoginUsu);
     }
-    public boolean validar_registro(){
-        String contra=txtContraUsu.getText().toString();
-        String id=txtIdentUsu.getText().toString();
+    public void ingresar(String idCl,String claveCl){
+        Cursor myCursor;
+        SQLiteDatabase db =myClass.getWritableDatabase();
+        myCursor=db.rawQuery("SELECT Id_cliente,clave_ingreso FROM cliente WHERE Id_cliente='"+idCl+"' AND clave_ingreso='"+claveCl+"'",null);
+        if (myCursor.moveToFirst()==true) {
+            String idClienteExtraido = myCursor.getString(0);
+            String claveClienteExtraido = myCursor.getString(1);
+            if (idCl.equals(idClienteExtraido) && claveCl.equals(claveClienteExtraido)) {
+                Intent intent = new Intent(getApplicationContext(), agregar_alCarrito.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(),"Inténtelo de nuevo",Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getApplicationContext(),"Inténtelo de nuevo",Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        if(contra.length()==0){
+    public boolean validar_registro(){
+        String idCl=txtIdentUsu.getText().toString();
+        String clave_cl=txtContraUsu.getText().toString();
+        if(idCl.length()==0){
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
-
         }
-        if(id.length()!=0 && contra.length()!=0){
-            Toast.makeText(getApplicationContext(),"Registro hecho exitosamente",Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else{
+        if(clave_cl.length()==0){
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(idCl.length()!=0 && clave_cl.length()!=0){
+            return true;
+        }else{
             return false;
         }
     }

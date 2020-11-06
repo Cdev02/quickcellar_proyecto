@@ -31,7 +31,7 @@ public class Actualizar extends AppCompatActivity {
                     db.execSQL("update cliente set nombre='" + txtANomUsuario.getText().toString()
                             + "',correo='"+txtAcorreoUs.getText().toString()+
                             "',clave_ingreso='"+ txtAContraUsuario.getText().toString()+
-                           "'where nickname='" + txtANickname.getText().toString() + "'");
+                           "'where Id_cliente='" + txtANickname.getText().toString() + "'");
                     Toast.makeText(getApplicationContext(),"Actualización completada",Toast.LENGTH_LONG).show();
 
                 }catch (Exception er)
