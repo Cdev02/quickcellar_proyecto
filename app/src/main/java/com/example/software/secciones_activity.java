@@ -3,6 +3,7 @@ package com.example.software;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class secciones_activity extends AppCompatActivity {
     EditText txtNombreSec,txtDescripcionSec,txtFechaSec;
     Button btnAggSec;
+    FloatingActionButton btnSalir;
     myClass myClass;
     SQLiteDatabase db;
     @Override
@@ -75,8 +79,17 @@ public class secciones_activity extends AppCompatActivity {
                 txtFechaSec.setText("");
             }
         });
+
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
     private void conectar(){
+        btnSalir=findViewById(R.id.btnSalirAggSeccion);
         txtNombreSec=findViewById(R.id.txtNombreSeccion);
         txtDescripcionSec=findViewById(R.id.txtDescripcionSeccion);
         txtFechaSec=findViewById(R.id.txtFechaCrSeccion);

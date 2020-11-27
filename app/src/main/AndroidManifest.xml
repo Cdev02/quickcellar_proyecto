@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/quickcellarlogo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".listadoProductosPendientes"></activity>
+        <activity android:name=".estadisticas_activity"></activity>
+        <activity android:name=".listadoProductosPendientes" />
         <activity android:name=".comprarCarritosPendientes" />
         <activity android:name=".catalogoClientesActivity" />
         <activity android:name=".detalleProducto" />

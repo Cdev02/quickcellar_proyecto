@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
@@ -81,6 +82,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public int getItemCount() {
         return id_producto.size();
+    }
+
+    public void filter(String strSearch){
+        if(strSearch.length()==0){
+
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

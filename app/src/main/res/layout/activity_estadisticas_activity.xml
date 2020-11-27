@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".estadisticas_activity">
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="19dp"
+            android:text="Ingresos totales por ventas"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="179dp" />
+
+        <TextView
+            android:id="@+id/tvVentasTotales"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:text="0"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin2"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lin1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="19dp"
+            android:text="Empleados con más ventas"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="179dp" />
+
+        <TextView
+            android:id="@+id/tvEmpleadosConMasVentas"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:text="0"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin3"
+        android:layout_below="@id/lin2"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="19dp"
+            android:text="Cantidad de productos"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="179dp" />
+
+        <TextView
+            android:id="@+id/tvCantidadProductos"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:text="0" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/lin3"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="19dp"
+            android:text="Cantidad de clientes"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="179dp" />
+
+        <TextView
+            android:id="@+id/tvCantidadClientes"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:text="0" />
+    </LinearLayout>
+</RelativeLayout>

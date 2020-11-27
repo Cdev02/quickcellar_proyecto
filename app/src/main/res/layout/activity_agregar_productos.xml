@@ -1,70 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppTheme"
     tools:context=".AgregarProductos">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/lin1AggProductos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
             android:orientation="vertical">
-            <Spinner
-                android:layout_width="200dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:layout_marginRight="50dp"
-                android:id="@+id/spSecciones"></Spinner>
-            <EditText
-                android:layout_width="300dp"
+                android:layout_marginTop="10dp"
+                android:text="AGREGAR NUEVO PRODUCTO"
+                android:textColor="@color/blue_quickcellar"
+                android:textStyle="bold"
+                android:textSize="25sp"></TextView>
+        </LinearLayout>
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="left"
+            android:layout_marginRight="75dp"
+            android:id="@+id/spSecciones"></Spinner>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linNombrePr"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese nombre del producto"
-                android:textColorHint="#BB9009"
-                android:textColor="#BB9009"
-                android:layout_marginTop="25dp"
-                android:id="@+id/txtNomProducto">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Id del empleado"
+                    android:src="@drawable/ic_producto_quickcellar"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtNomProducto"
+                    android:background="@null"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtReferenciaPr"
-                android:hint="Ingrese referencia del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Nombre del producto"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linNombrePr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linNombrePr"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linReferenciaPr"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtMarcaPr"
-                android:hint="Ingrese marca del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Id del empleado"
+                    android:src="@drawable/ic_referenciapr_quickcellar"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtReferenciaPr"
+                    android:background="@null"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtDescripcionPr"
-                android:hint="Ingrese descripción del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
-            <EditText
-                android:layout_width="300dp"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Referencia del producto"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linReferenciaPr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linReferenciaPr"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linMarcaPr"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtPrecioPr"
-                android:inputType="number"
-                android:hint="Ingrese precio del producto"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:textColor="#BB9009">
-            </EditText>
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Id del empleado"
+                    android:src="@drawable/ic_baseline_branding_watermark_24"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtMarcaPr"
+                    android:background="@null"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Marca del producto"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linMarcaPr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linMarcaPr"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linDescripcionPr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Id del empleado"
+                    android:src="@drawable/ic_descripcionpr_quickcellar"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtDescripcionPr"
+                    android:background="@null"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Descripción del producto"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linDescripcionPr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linDescripcionPr"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linPrecioPr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Id del empleado"
+                    android:src="@drawable/ic_totalcomprascliente"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtPrecioPr"
+                    android:background="@null"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Precio del producto"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linPrecioPr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linPrecioPr"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -75,6 +285,18 @@
                 android:textColor="#140C37"
                 android:textSize="20dp">
             </Button>
-        </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSalirAggProductos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="68dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/ic_salir"
+            tools:ignore="VectorDrawableCompat"/>
+    </LinearLayout>
+</ScrollView>

@@ -139,7 +139,7 @@
             android:text="Ingresar"
             android:textSize="20dp"
             android:background="@drawable/boton_redondeado"
-            android:textColor="#140C37"
+            android:textColor="#FFFFFF"
             android:id="@+id/btnLoginUsu"
             android:layout_marginTop="40dp"></Button>
         <LinearLayout

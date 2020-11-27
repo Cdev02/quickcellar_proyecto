@@ -62,7 +62,7 @@ import java.util.ArrayList;
                     idCarrito=lvCarritos.getItemAtPosition(position).toString();
                     idCarritoEntero=Integer.parseInt(idCarrito);
                         db=myClass.getWritableDatabase();
-                        myCursor=db.rawQuery("select nombre_producto, seleccion_producto.cantidad, precio_unitario, (precio_unitario * seleccion_producto.cantidad) from " +
+                        myCursor=db.rawQuery("select nombre_producto, seleccion_producto.cantidad, precio_unitario, (precio_unitario * seleccion_producto.cantidad)*1.19 from " +
                                 "producto inner join seleccion_producto on producto.Id_producto=seleccion_producto.Id_producto " +
                                 "inner join carrito on carrito.Id_carrito=seleccion_producto.Id_carrito " +
                                 "where carrito.Id_carrito="+idCarritoEntero+"",null);

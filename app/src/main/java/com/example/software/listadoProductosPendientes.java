@@ -66,7 +66,6 @@ public class listadoProductosPendientes extends AppCompatActivity {
                 i.putExtra("emailCliente",correoCl);
                 i.putExtra("comprasCliente",comprasCl);
                 i.putExtra("claveAcceso",claveCl);
-                Toast.makeText(getApplicationContext(),String.valueOf(idCarrito),Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });

@@ -10,13 +10,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class comprar_activity extends AppCompatActivity {
+public class comprar_activity extends AppCompatActivity  {
     RecyclerView recProductos;
     FloatingActionButton btn_salir;
     myClass myClass;
@@ -43,7 +44,6 @@ public class comprar_activity extends AppCompatActivity {
             correoCl= b.getString("emailCliente");
             comprasCl= b.getInt("comprasCliente");
             claveCl=b.getString("claveAcceso");
-            Toast.makeText(getApplicationContext(),String.valueOf(idCarrito),Toast.LENGTH_SHORT).show();
         }
         inicializarArrays();
         guardarDatosEnArray();

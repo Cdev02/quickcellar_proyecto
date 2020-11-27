@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".comprar_activity">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svSearchElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Nombre del producto"
+        app:iconifiedByDefault="false"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.SearchView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recProductos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="297dp" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svSearchElement" />
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnSalirAlPerfil"
         android:layout_width="wrap_content"

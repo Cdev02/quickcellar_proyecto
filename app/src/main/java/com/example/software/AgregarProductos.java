@@ -14,11 +14,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class AgregarProductos extends AppCompatActivity {
     EditText txtNombrePr, txtMarcaPr,txtDescripPr,txtPrecioPr,txtRefPr;
     Button btnAgregar;
+    FloatingActionButton btnSalir;
     Spinner spSecciones;
     ArrayList<String> listado=new ArrayList<>();
     myClass myClass;
@@ -60,6 +63,15 @@ public class AgregarProductos extends AppCompatActivity {
                 txtDescripPr.setText("");
                 txtPrecioPr.setText("");
                 txtMarcaPr.setText("");
+            }
+        });
+
+
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -143,6 +155,7 @@ public class AgregarProductos extends AppCompatActivity {
 
     }
     private void conectar() {
+        btnSalir=findViewById(R.id.btnSalirAggProductos);
         txtNombrePr = findViewById(R.id.txtNomProducto);
         txtRefPr = findViewById(R.id.txtReferenciaPr);
         spSecciones=findViewById(R.id.spSecciones);
