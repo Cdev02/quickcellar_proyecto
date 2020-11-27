@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,13 +25,15 @@ import java.util.Calendar;
 public class agregar_alCarrito extends AppCompatActivity {
 
     Button btnCrearCar;
+    FloatingActionButton btn_salir;
     Spinner spSelecEmp;
     EditText txtFechaCreaCar,txtEmpleadoCargo;
     myClass myClass;
     SQLiteDatabase db;
     ArrayList<String>idEmp=new ArrayList<>();
     ArrayList<String> listado=new ArrayList<>();
-    String idClienteExtraido;
+    String IdCl, nombreCl, correoCl, claveCl;
+    int comprasCl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +48,14 @@ public class agregar_alCarrito extends AppCompatActivity {
         txtFechaCreaCar.setText(fechaHoraActual);
         Bundle b=getIntent().getExtras();
         if(b!=null){
-            idClienteExtraido= b.getString("idCliente");
+            if(b!=null){
+                IdCl= b.getString("idCliente");
+                nombreCl= b.getString("nombreCliente");
+                correoCl= b.getString("emailCliente");
+                comprasCl= b.getInt("comprasCliente");
+                claveCl=b.getString("claveAcceso");
+            }
         }
-
-
         spSelecEmp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -74,7 +82,7 @@ public class agregar_alCarrito extends AppCompatActivity {
                         db=myClass.getWritableDatabase();
                         db.execSQL("INSERT INTO carrito VALUES(null ,'"+
                         idEmpleadoExtraido + "','" +
-                        idClienteExtraido + "','" +
+                        IdCl + "','" +
                         txtFechaCreaCar.getText().toString() + "',"+0+")");
                         Toast.makeText(getApplicationContext(),"Carrito se creó exitosamente",Toast.LENGTH_LONG).show();
                     }
@@ -84,9 +92,27 @@ public class agregar_alCarrito extends AppCompatActivity {
                 }
                 idCarrito=obtenerIdCarrito();
                 intent.putExtra("idCar", idCarrito);
-                intent.putExtra("idCliente",idClienteExtraido);
+                intent.putExtra("idCliente",IdCl);
+                intent.putExtra("nombreCliente",nombreCl);
+                intent.putExtra("emailCliente",correoCl);
+                intent.putExtra("comprasCliente",comprasCl);
+                intent.putExtra("claveAcceso",claveCl);
                 db.close();
                 startActivity(intent);
+            }
+        });
+
+
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),perfilClienteActivity.class);
+                i.putExtra("idCliente",IdCl);
+                i.putExtra("nombreCliente",nombreCl);
+                i.putExtra("emailCliente",correoCl);
+                i.putExtra("comprasCliente",comprasCl);
+                i.putExtra("claveAcceso",claveCl);
+                startActivity(i);
             }
         });
     }
@@ -127,7 +153,12 @@ public class agregar_alCarrito extends AppCompatActivity {
         spSelecEmp.setAdapter(adapter);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
     private void conectar(){
+        btn_salir=findViewById(R.id.btnSalirAlPerfilCarrito);
         btnCrearCar=findViewById(R.id.btnCrearCarrito);
         spSelecEmp=findViewById(R.id.spEmpleados);
         txtFechaCreaCar=findViewById(R.id.txtFechaCreacionCarrito);

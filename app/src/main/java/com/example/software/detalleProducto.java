@@ -3,6 +3,7 @@ package com.example.software;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class detalleProducto extends AppCompatActivity {
     TextView tvNomPr,tvSecPr,tvMarcaPr,tvRefPr,tvDescPr;
     EditText txtCantiPr;
     Button btnAggPr;
-    String nomPr, secPr, marcaPr, refPr, DesPr;
+    String nomPr, marcaPr, refPr, DesPr,nombreSec,secPr;
     int idCar, idPr,cantPr;
+    private int comprasCl;
+    private String idCliente, nombreCl, correoCl, claveCl;
     myClass myClass;
     SQLiteDatabase db;
     @Override
@@ -36,8 +41,15 @@ public class detalleProducto extends AppCompatActivity {
             refPr=b.getString("refPr");
             DesPr=b.getString("descrPr");
             idCar=b.getInt("idCarrito");
+            idCliente=b.getString("idCliente");
+            nombreCl= b.getString("nombreCliente");
+            correoCl= b.getString("emailCliente");
+            comprasCl= b.getInt("comprasCliente");
+            claveCl=b.getString("claveAcceso");
+            nombreSec=nombreSeccion(secPr);
             tvNomPr.setText(nomPr);
             tvMarcaPr.setText(marcaPr);
+            tvSecPr.setText(nombreSec);
             tvRefPr.setText(refPr);
             tvDescPr.setText(DesPr);
         }
@@ -53,6 +65,11 @@ public class detalleProducto extends AppCompatActivity {
                         db.close();
                         Intent i=new Intent(getApplicationContext(),comprar_activity.class);
                         i.putExtra("idCar",idCar);
+                        i.putExtra("idCliente",idCliente);
+                        i.putExtra("nombreCliente",nombreCl);
+                        i.putExtra("emailCliente",correoCl);
+                        i.putExtra("comprasCliente",comprasCl);
+                        i.putExtra("claveAcceso",claveCl);
                         startActivity(i);
                     }
                 }catch (Exception er)
@@ -61,6 +78,10 @@ public class detalleProducto extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 
     private void conectar(){
@@ -85,5 +106,18 @@ public class detalleProducto extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"ingresa los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+    private String nombreSeccion(String secPr){
+        String line="";
+        Cursor myCursor;
+        SQLiteDatabase db =myClass.getWritableDatabase();
+        myCursor=db.rawQuery("SELECT nombre_seccion FROM seccion WHERE Id_seccion='"+secPr+"'",null);
+        if(myCursor.moveToFirst()) {
+            do {
+                line =myCursor.getString(0);
+            }while (myCursor.moveToNext());
+        }
+        db.close();
+        return  line;
     }
 }

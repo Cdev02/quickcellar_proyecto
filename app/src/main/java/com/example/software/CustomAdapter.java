@@ -25,9 +25,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Activity activity;
     private ArrayList<String> nombre_pr, referencia_pr,marca_pr,descr_pr;
     private ArrayList<Integer> id_producto, id_seccionPr,precio_pr;
-    private int idCarrito;
+    private int idCarrito,comprasCl;
+    private String idCliente, nombreCl, correoCl, claveCl;
     CustomAdapter(Activity activity, Context context, ArrayList nombre_pr,ArrayList referencia_pr,ArrayList marca_pr,
-                  ArrayList descr_pr, ArrayList id_producto,ArrayList id_seccion,ArrayList precio, int idCarrito) {
+                  ArrayList descr_pr, ArrayList id_producto,ArrayList id_seccion,ArrayList precio, int idCarrito, String idCl,
+                  String nombCl,String emailCl,String claveCl,int comprasCl) {
         this.activity = activity;
         this.context = context;
         this.nombre_pr = nombre_pr;
@@ -38,6 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.descr_pr=descr_pr;
         this.precio_pr=precio;
         this.idCarrito=idCarrito;
+        this.comprasCl=comprasCl;this.idCliente=idCl;this.nombreCl=nombCl;this.correoCl=emailCl;this.claveCl=claveCl;
     }
     @NonNull
     @Override
@@ -64,6 +67,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("refPr",String.valueOf(referencia_pr.get(position)));
                 intent.putExtra("descrPr",String.valueOf(descr_pr.get(position)));
                 intent.putExtra("idCarrito",idCarrito);
+                intent.putExtra("idCliente",idCliente);
+                intent.putExtra("nombreCliente",nombreCl);
+                intent.putExtra("emailCliente",correoCl);
+                intent.putExtra("comprasCliente",comprasCl);
+                intent.putExtra("claveAcceso",claveCl);
                 context.startActivity(intent);
             }
         });

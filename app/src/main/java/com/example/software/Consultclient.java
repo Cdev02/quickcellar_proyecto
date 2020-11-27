@@ -66,4 +66,8 @@ public class Consultclient extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1,listado);
         ListClient.setAdapter(adapter);
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }

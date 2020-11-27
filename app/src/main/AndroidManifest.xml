@@ -4,12 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icono_quickcellar"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/quickcellarlogo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".detalleProducto"></activity>
+        <activity android:name=".listadoProductosPendientes"></activity>
+        <activity android:name=".comprarCarritosPendientes" />
+        <activity android:name=".catalogoClientesActivity" />
+        <activity android:name=".detalleProducto" />
         <activity android:name=".perfilClienteActivity" />
         <activity android:name=".agregar_alCarrito" />
         <activity android:name=".login_general_activity">

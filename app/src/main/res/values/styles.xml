@@ -1,14 +1,13 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#0C054B</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#BB9009</item>
+        <item name="colorAccent">@color/blue_quickcellar</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textSize">15dp</item>
-        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="style2" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -19,6 +18,12 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textSize">15dp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="Bottom_navigation">
+        <item name="android:background">@drawable/separador</item>
+        <item name="iconTint">#FFFFFF</item>
+        <item name="itemTextColor">#000000</item>
     </style>
 
 </resources>

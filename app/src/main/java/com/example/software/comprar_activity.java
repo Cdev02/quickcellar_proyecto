@@ -24,8 +24,8 @@ public class comprar_activity extends AppCompatActivity {
     ArrayList<String> nombre_pr, referencia_pr,marca_pr,descr_pr;
     ArrayList<Integer> id_producto, id_seccionPr,precio_pr;
     CustomAdapter customAdapter;
-    int idCarrito;
-    String idCliente;
+    int idCarrito,comprasCl;
+    String idCliente, nombreCl, correoCl, claveCl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +39,27 @@ public class comprar_activity extends AppCompatActivity {
         if(b!=null) {
             idCarrito=b.getInt("idCar");
             idCliente=b.getString("idCliente");
+            nombreCl= b.getString("nombreCliente");
+            correoCl= b.getString("emailCliente");
+            comprasCl= b.getInt("comprasCliente");
+            claveCl=b.getString("claveAcceso");
+            Toast.makeText(getApplicationContext(),String.valueOf(idCarrito),Toast.LENGTH_SHORT).show();
         }
         inicializarArrays();
         guardarDatosEnArray();
         customAdapter = new CustomAdapter(comprar_activity.this,this, nombre_pr, referencia_pr, marca_pr,
-                descr_pr,id_producto, id_seccionPr,precio_pr,idCarrito);
+                descr_pr,id_producto, id_seccionPr,precio_pr,idCarrito,idCliente,nombreCl,correoCl,claveCl,comprasCl);
         recProductos.setAdapter(customAdapter);
         recProductos.setLayoutManager(new LinearLayoutManager(comprar_activity.this));
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),perfilClienteActivity.class);
+                Intent i=new Intent(getApplicationContext(),agregar_alCarrito.class);
                 i.putExtra("idCliente",idCliente);
+                i.putExtra("nombreCliente",nombreCl);
+                i.putExtra("emailCliente",correoCl);
+                i.putExtra("comprasCliente",comprasCl);
+                i.putExtra("claveAcceso",claveCl);
                 startActivity(i);
             }
         });
@@ -90,5 +99,9 @@ public class comprar_activity extends AppCompatActivity {
         marca_pr=new ArrayList<>();
         descr_pr=new ArrayList<>();
         precio_pr=new ArrayList<>();
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }

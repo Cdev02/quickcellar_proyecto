@@ -82,6 +82,10 @@ public class secciones_activity extends AppCompatActivity {
         txtFechaSec=findViewById(R.id.txtFechaCrSeccion);
         btnAggSec=findViewById(R.id.btnAgregarSecciones);
     }
+    @Override
+    public void onBackPressed() {
+
+    }
     public boolean validar_registro(){
         String nombre=txtNombreSec.getText().toString();
         String desc=txtDescripcionSec.getText().toString();

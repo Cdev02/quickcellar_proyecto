@@ -10,9 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class IngCliente extends AppCompatActivity {
     EditText txtNomUsuario,txtContraUsuario,txtIdCliente,txtCorreoUs;
     Button btnIgresar;
+    FloatingActionButton btn_salir;
     myClass myClass;
     SQLiteDatabase db;
 
@@ -45,8 +48,13 @@ public class IngCliente extends AppCompatActivity {
                 txtNomUsuario.setText("");
                 txtCorreoUs.setText("");
                 txtContraUsuario.setText("");
-
-
+            }
+        });
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),login_usuario.class);
+                startActivity(i);
             }
         });
     }
@@ -83,10 +91,15 @@ public class IngCliente extends AppCompatActivity {
     }
 
     private void conectar() {
+        btn_salir=findViewById(R.id.btnSalirAlPerfilRegistro);
         txtContraUsuario=findViewById(R.id.txtContraUsuario);
         txtNomUsuario=findViewById(R.id.txtNomUsuario);
         btnIgresar=findViewById(R.id.btnIngresar);
         txtIdCliente=findViewById(R.id.txtIdCliente);
         txtCorreoUs=findViewById(R.id.txtCorreoUs);
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }

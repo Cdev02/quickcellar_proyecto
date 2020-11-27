@@ -1,62 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/AppTheme"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C054B"
     tools:context=".Actualizar">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/lin1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
             android:orientation="vertical">
-            <EditText
-                android:id="@+id/txtANickname"
-                android:layout_width="300dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#BB9009"
-                android:hint="Identificación"
-                android:textColorHint="#BB9009"
-                android:inputType="number"></EditText>
-            <EditText
-                android:id="@+id/txtANomUsuario"
-                android:layout_width="300dp"
-                android:textColor="#BB9009"
-                android:hint="Nuevo nombre para el usuario"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:layout_height="wrap_content"></EditText>
-            <EditText
-                android:id="@+id/txtAcorreoUS"
-                android:layout_width="300dp"
-                android:textColor="#BB9009"
-                android:hint="Nuevo correo para el usuario"
-                android:textColorHint="#BB9009"
-                android:layout_marginTop="25dp"
-                android:layout_height="wrap_content"></EditText>
-            <EditText
-                android:id="@+id/txtAContraUsuario"
-                android:layout_width="300dp"
-                android:layout_marginTop="25dp"
-                android:layout_height="wrap_content"
-                android:textColor="#BB9009"
-                android:hint="Nueva contraseña"
-                android:textColorHint="#BB9009"
-                android:inputType="textPassword"></EditText>
-            <Button
-                android:id="@+id/btnActualizar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/boton_redondeado"
-                android:text="Actualizar"
-                android:textColor="#140C37"
-                android:layout_marginTop="25dp"
-                android:textSize="20dp"></Button>
+                android:layout_marginTop="10dp"
+                android:text="ACTUALIZAR INFORMACIÓN"
+                android:textColor="@color/blue_quickcellar"
+                android:textStyle="bold"
+                android:textSize="25sp"></TextView>
         </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_idcliente"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtANickname"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:hint="123456789"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Id del cliente"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linId"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_nombre_quickcellar"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtANomUsuario"
+                    android:background="@null"
+                    android:hint="nombre y apellido"
+                    android:importantForAutofill="no"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Nombre del cliente"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linNombre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linNombre"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_emailcliente"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtAcorreoUS"
+                    android:background="@null"
+                    android:hint="usuario@email.com"
+                    android:importantForAutofill="no"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Correo del cliente"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linCorreo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linCorreo"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linContra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_clave_quickcellar"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtAContraUsuario"
+                    android:background="@null"
+                    android:hint="················"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Clave de acceso"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linContra"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linContra"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boton_redondeado"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp">
+        </Button>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSalirAlPerfilActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="28dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/ic_salir_quickcellar"
+            tools:ignore="VectorDrawableCompat"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,94 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C054B"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".perfilClienteActivity">
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="6dp">
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.4"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_quickcellar_user"></ImageView>
+        <TextView
+            android:id="@+id/tvNombreClientePerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="NOMBRE COMPLETO"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="15dp"></TextView>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frameLayoutSalir"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/boton_redondeado">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_salir" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SALIR"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_idcliente"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ID DEL CLIENTE"
+                    android:textSize="15dp"
+                    android:textColor="#000000"
+                    android:textAlignment="viewStart"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="bold"></TextView>
+                <TextView
+                    android:id="@+id/tvIdClientePerfilPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textSize="12dp"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="bold"
+                    ></TextView>
+            </LinearLayout>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/txtIdPer"
-                android:layout_width="317dp"
-                android:hint="Identificación"
-                android:layout_height="40dp"
-                android:textColorHint="#BB9009"
-                android:textColor="#BB9009"
-                android:enabled="false"
-                android:layout_marginTop="100dp"
-                />
-
-            <EditText
-                android:id="@+id/txtNomPer"
-                android:layout_width="317dp"
-                android:enabled="false"
-                android:layout_height="40dp"
-                android:hint="Nombre"
-                android:textColorHint="#BB9009"
-                android:textColor="#BB9009"
-                android:layout_marginTop="30dp"
-                 />
-
-            <EditText
-                android:id="@+id/txtEmailPer"
-                android:layout_width="317dp"
-                android:layout_height="40dp"
-                android:hint="Correo"
-                android:textColorHint="#BB9009"
-                android:enabled="false"
-                android:textColor="#BB9009"
-                android:layout_marginTop="30dp"
-                 />
-
-            <EditText
-                android:id="@+id/txtTotalcomp"
-                android:layout_width="317dp"
-                android:layout_height="40dp"
-                android:hint="Total compras"
-                android:enabled="false"
-                android:textColorHint="#BB9009"
-                android:textColor="#BB9009"
-
-                android:layout_marginTop="30dp"
-                />
-
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_emailcliente"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
-
-                <Button
-                    android:id="@+id/btnActualizarDatosCliente"
-                    android:layout_width="116dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="50dp"
-                    android:background="@drawable/boton_redondeado"
-                    android:textColor="#140C37"
-
-                    android:text="Actualizar" />
-
-                <Button
-                    android:id="@+id/btnComprarProductos"
-                    android:layout_width="107dp"
-                    android:layout_height="41dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/boton_redondeado"
-                    android:textColor="#140C37"
-                    android:text="Comprar" />
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-MAIL DEL CLIENTE"
+                    android:textSize="15dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="#000000"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="bold"></TextView>
+                <TextView
+                    android:id="@+id/tvEmailClientePerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textSize="12dp"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="bold"
+                    ></TextView>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_totalcomprascliente"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL EN COMPRAS"
+                    android:textSize="15dp"
+                    android:textAlignment="viewStart"
+                    android:layout_marginStart="7dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"></TextView>
+                <TextView
+                    android:id="@+id/tvTotalComprasClientePerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textSize="12dp"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="bold"
+                    ></TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvNavigationBottom"
+        style="@style/Bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        app:menu="@menu/bottom_navigation"/>
+
+</LinearLayout>

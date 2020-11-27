@@ -1,44 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_usuario">
-
+    tools:context=".login_usuario"
+    android:background="#FFFFFF">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/txtvTitu"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/lin1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clientes"
-            android:textColor="#BB9009"
-            android:fontFamily="sans-serif-black"
-            android:textSize="40dp">
-        </TextView>
-        <EditText
-            android:layout_width="300dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/quickcellarlogo1"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="BIENVENIDO"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="25sp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingresa tus datos para continuar"
+                android:textSize="11sp"
+                android:layout_marginBottom="15dp"></TextView>
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtIdentUsu"
-            android:hint="Ingrese su Id"
-            android:textColorHint="#BB9009"
-            android:textColor="#BB9009"
-            android:layout_marginTop="25dp">
-        </EditText>
-        <EditText
-            android:layout_width="300dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_idcliente"
+                    ></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:id="@+id/txtIdentUsu"
+                    android:background="@null"
+                    android:hint="123456789"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Id del cliente"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linId"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtvContra"
-            android:inputType="textPassword"
-            android:hint="Ingrese su contraseña"
-            android:textColorHint="#BB9009"
-            android:textColor="#BB9009"
-            android:layout_marginTop="25dp"
-            android:id="@+id/txtContraUsu">
-        </EditText>
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:id="@+id/linContra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/separador"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Ingresa tu Id"
+                    android:src="@drawable/ic_clave_quickcellar"></ImageView>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@null"
+                    android:hint="················"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtContraUsu">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:background="#FFFFFF"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Clave de acceso"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linContra"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/linContra"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <Button
             android:layout_width="200dp"
             android:layout_height="50dp"
@@ -48,7 +141,39 @@
             android:background="@drawable/boton_redondeado"
             android:textColor="#140C37"
             android:id="@+id/btnLoginUsu"
-            android:layout_marginTop="40dp">
-        </Button>
+            android:layout_marginTop="40dp"></Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes cuenta?"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvCrearCuentaUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Crea una nueva cuenta"
+                android:textColor="@color/blue_quickcellar"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSalirAlLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="28dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/ic_salir"
+            tools:ignore="VectorDrawableCompat"/>
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>

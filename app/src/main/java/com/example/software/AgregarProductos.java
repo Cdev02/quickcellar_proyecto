@@ -95,7 +95,7 @@ public class AgregarProductos extends AppCompatActivity {
     private void desplegar()
     {
         listado=ListaUnidades();
-        ArrayAdapter adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,listado);
+        ArrayAdapter adapter=new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item_personalizado,listado);
         spSecciones.setAdapter(adapter);
         spSecciones.setSelection(-1);
     }
@@ -137,6 +137,10 @@ public class AgregarProductos extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Ingresa todos los datos correctamente",Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+    @Override
+    public void onBackPressed() {
+
     }
     private void conectar() {
         txtNombrePr = findViewById(R.id.txtNomProducto);

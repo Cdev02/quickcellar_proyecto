@@ -13,11 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Calendar;
 
 public class AggEmpleado extends AppCompatActivity {
     EditText txtNombre, txtFechaing,txtIdem;
     Button btnAgregarEmpl;
+    FloatingActionButton btnSalirAdminGerente;
     myClass myClass;
     SQLiteDatabase db;
     @Override
@@ -50,6 +53,13 @@ public class AggEmpleado extends AppCompatActivity {
             }
         });
 
+        btnSalirAdminGerente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
+            }
+        });
         txtFechaing.setOnClickListener(new View.OnClickListener() {
             Calendar calendar=Calendar.getInstance();
             final int anio=calendar.get(Calendar.YEAR);
@@ -106,9 +116,14 @@ public class AggEmpleado extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
     private void conectar() {
+        btnSalirAdminGerente=findViewById(R.id.btnSalirAdminGerente);
         txtFechaing = findViewById(R.id.txtFechaing);
-        txtNombre = findViewById(R.id.txtNombre);
+        txtNombre = findViewById(R.id.txtNombreEmpleado);
         txtIdem=findViewById(R.id.txtIdEm);
         btnAgregarEmpl = findViewById(R.id.btnAgregarEmpl);
     }

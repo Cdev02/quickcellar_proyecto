@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class LogInGerente extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class LogInGerente extends AppCompatActivity {
     String id= "17100";
     String contra= "17100";
     Button btnLogin;
+    FloatingActionButton btnSalir;
     EditText txtIdenti,txtContra;
 
     @Override
@@ -42,12 +45,25 @@ public class LogInGerente extends AppCompatActivity {
             }
         });
 
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),login_general_activity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 
     private void conectar() {
+        btnSalir=findViewById(R.id.btnSalirAlLoginGeneral);
         btnLogin=findViewById(R.id.btnLogin);
         txtContra=findViewById(R.id.txtContra);
         txtIdenti=findViewById(R.id.txtIdent);
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }

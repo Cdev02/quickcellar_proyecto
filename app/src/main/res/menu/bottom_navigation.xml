@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actualizarOpcion"
+        android:icon="@drawable/ic_actualizar_quickcellar"
+        android:title="Actualizar"></item>
+    <item
+        android:id="@+id/comprarOpcion"
+        android:icon="@drawable/ic_comprar2_quickcellar"
+        android:title="Comprar"></item>
+    <item
+        android:id="@+id/verCatalogoOpcion"
+        android:icon="@drawable/ic_catalogo_quickcellar"
+        android:title="Catálogo"></item>
+    <item
+        android:id="@+id/comprarCarritoOpcion"
+        android:icon="@drawable/ic_comprarcarrito_quickcellar"
+        android:title="Mis carritos"></item>
+
+
+</menu>

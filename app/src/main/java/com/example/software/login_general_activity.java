@@ -1,6 +1,7 @@
 package com.example.software;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,21 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 public class login_general_activity extends AppCompatActivity {
-    Button btnGerente,btnCliente;
+    CardView cvGerente,cvCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_general_activity);
         conectar();
-        btnGerente.setOnClickListener(new View.OnClickListener() {
+        cvGerente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),LogInGerente.class);
                 startActivity(i);
             }
         });
-        btnCliente.setOnClickListener(new View.OnClickListener() {
+        cvCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),login_usuario.class);
@@ -33,7 +34,11 @@ public class login_general_activity extends AppCompatActivity {
     }
 
     private void conectar() {
-        btnCliente=findViewById(R.id.btnIngresoComoCliente);
-        btnGerente=findViewById(R.id.btnIngresoComoGerente);
+        cvCliente=findViewById(R.id.cvIngresoComoCliente);
+        cvGerente=findViewById(R.id.cvIngresoComoGerente);
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }

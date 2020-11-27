@@ -63,6 +63,11 @@ public class VerProductos extends AppCompatActivity {
         db.close();
         return  datos;
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
     private void desplegar()
     {
         listado=ListaUnidades();

@@ -9,13 +9,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class login_usuario extends AppCompatActivity {
     EditText txtContraUsu,txtIdentUsu;
+    TextView tvCrearCuenta;
     Button btnLoginUsu;
+    FloatingActionButton btn_salir;
     myClass myClass;
 
     @Override
@@ -33,12 +40,32 @@ public class login_usuario extends AppCompatActivity {
                 }
             }
         });
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),login_general_activity.class);
+                startActivity(i);
+            }
+        });
+        tvCrearCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),IngCliente.class);
+                startActivity(i);
+            }
+        });
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
     private void conectar() {
+        tvCrearCuenta=findViewById(R.id.tvCrearCuentaUsuario);
         txtContraUsu=findViewById(R.id.txtContraUsu);
         txtIdentUsu=findViewById(R.id.txtIdentUsu);
         btnLoginUsu=findViewById(R.id.btnLoginUsu);
+        btn_salir=findViewById(R.id.btnSalirAlLogin);
     }
     public void ingresar(String idCl,String claveCl){
         Cursor myCursor;
@@ -58,14 +85,17 @@ public class login_usuario extends AppCompatActivity {
 
             if (idCl.equals(idClienteExtraido) && claveCl.equals(claveClienteExtraido)) {
 
-                Intent intent1 = new Intent(getApplicationContext(), perfilClienteActivity.class);
-                intent1.putExtra("idCliente",idClienteExtraido);
-                intent1.putExtra("Nombre",Nombre);
-                intent1.putExtra("Correo",Correo);
-                intent1.putExtra("TotalCompras",totalCompras);
+                Intent i=new Intent(getApplicationContext(),perfilClienteActivity.class);
+                i.putExtra("idCliente",idClienteExtraido);
+                i.putExtra("nombreCliente",Nombre);
+                i.putExtra("emailCliente",Correo);
+                i.putExtra("comprasCliente",totalCompras);
+                i.putExtra("claveAcceso",claveClienteExtraido);
                 Toast.makeText(getApplicationContext(),"BIENVENIDO",Toast.LENGTH_LONG).show();
                 db.close();
-                startActivity(intent1);
+                startActivity(i);
+                txtContraUsu.setText("");
+                txtIdentUsu.setText("");
 
             }else{
                 Toast.makeText(getApplicationContext(),"Inténtelo de nuevo",Toast.LENGTH_SHORT).show();
